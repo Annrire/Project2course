@@ -1,0 +1,17 @@
+import wikipedia
+
+langu = input("Print first 2 letter for choose the language - ")
+wikipedia.set_lang(langu)
+searching = input("Print the theme - ")
+print("Possible themes:\n", "\n".join(map(str, wikipedia.search(searching))))
+searching = input("Print the choosen theme - ")
+try:
+    searc = wikipedia.summary(searching)
+except:
+    print("Possible themes:\n", "\n".join(map(str, wikipedia.search(searching))))
+    searc = input("Print the full choosen theme - ")
+#print(wikipedia.page(searching).content) #f.write(wikipedia.page(searching).content)
+f = open("infoProject.bin", 'wb')
+f.write(wikipedia.page(searc).content)
+f.close()
+sait = wikipedia.page(searching).url
